@@ -5,7 +5,6 @@ import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.utils.player.ChatUtils;
-import meteordevelopment.meteorclient.utils.player.InvUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -14,11 +13,30 @@ import net.minecraft.item.Items;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AutoSell extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
+    public enum Mode {
+        Whitelist,
+        Blacklist
+    }
+
+    private final Setting<Mode> mode = sgGeneral.add(new EnumSetting.Builder<Mode>()
+        .name("mode")
+        .description("Whitelist: Only sell items in list. Blacklist: Sell everything EXCEPT items in list.")
+        .defaultValue(Mode.Blacklist)
+        .build()
+    );
+
+    private final Setting<List<Item>> filterItems = sgGeneral.add(new ItemListSetting.Builder()
+        .name("filter-items")
+        .description("Items to filter for the sell process.")
+        .defaultValue(Items.DIAMOND_PICKAXE, Items.GOLDEN_APPLE, Items.NETHERITE_SWORD)
+        .build()
+    );
 
     private final Setting<String> sellCommand = sgGeneral.add(new StringSetting.Builder()
         .name("sell-command")
@@ -45,38 +63,27 @@ public class AutoSell extends Module {
         .build()
     );
 
-    private final Setting<List<Item>> filterItems = sgGeneral.add(new ItemListSetting.Builder()
-        .name("filter-items")
-        .description("Items to exclude or include during selling.")
-        .defaultValue(Items.DIAMOND_PICKAXE, Items.GOLDEN_APPLE)
-        .build()
-    );
-
-    private final Setting<Boolean> blacklistMode = sgGeneral.add(new BoolSetting.Builder()
-        .name("blacklist-mode")
-        .description("If enabled, items in the list will NOT be sold.")
+    private final Setting<Boolean> antiHopper = sgGeneral.add(new BoolSetting.Builder()
+        .name("anti-hopper")
+        .description("Prevents getting stuck on slots where hoppers refill items.")
         .defaultValue(true)
         .build()
     );
 
-    private enum State {
-        Idle,
-        Stealing,
-        OpeningSell,
-        Dumping
-    }
-
+    private enum State { Idle, Stealing, OpeningSell, Dumping }
     private State state = State.Idle;
     private int timer;
+    private final List<Integer> attemptedSlots = new ArrayList<>();
 
     public AutoSell() {
-        super(AddonTemplate.METEOR_MINUS, "auto-sell", "Steals from chests and dumps into sell GUI.");
+        super(AddonTemplate.METEOR_MINUS, "auto-sell", "Steals from chests and sells items based on filter.");
     }
 
     @Override
     public void onActivate() {
         state = State.Idle;
         timer = 0;
+        attemptedSlots.clear();
     }
 
     @EventHandler
@@ -89,6 +96,7 @@ public class AutoSell extends Module {
         switch (state) {
             case Idle -> {
                 if (mc.currentScreen instanceof GenericContainerScreen) {
+                    attemptedSlots.clear();
                     state = State.Stealing;
                 }
             }
@@ -98,7 +106,6 @@ public class AutoSell extends Module {
                     return;
                 }
 
-                // Check if inventory is full (getEmptySlot returns -1 if no slots are free)
                 if (mc.player.getInventory().getEmptySlot() == -1) {
                     mc.player.closeHandledScreen();
                     startSelling();
@@ -106,7 +113,6 @@ public class AutoSell extends Module {
                 }
 
                 if (!stealOneItem(screen)) {
-                    // Chest is empty
                     mc.player.closeHandledScreen();
                     startSelling();
                 } else {
@@ -137,15 +143,18 @@ public class AutoSell extends Module {
     private void startSelling() {
         ChatUtils.sendPlayerMsg(sellCommand.get());
         state = State.OpeningSell;
-        timer = 10; // Small delay to let the screen open
+        timer = 10;
+        attemptedSlots.clear();
     }
 
     private boolean stealOneItem(GenericContainerScreen screen) {
-        // top inventory only scammer dumb bozo (chest inv)
         for (int i = 0; i < screen.getScreenHandler().slots.size(); i++) {
             Slot slot = screen.getScreenHandler().slots.get(i);
             if (slot.inventory != mc.player.getInventory() && slot.hasStack()) {
+                if (antiHopper.get() && attemptedSlots.contains(i)) continue;
+
                 mc.interactionManager.clickSlot(screen.getScreenHandler().syncId, i, 0, SlotActionType.QUICK_MOVE, mc.player);
+                attemptedSlots.add(i);
                 return true;
             }
         }
@@ -158,9 +167,9 @@ public class AutoSell extends Module {
 
             if (slot.inventory == mc.player.getInventory() && slot.hasStack()) {
                 Item item = slot.getStack().getItem();
-                boolean inList = filterItems.get().contains(item);
 
-                boolean shouldSell = blacklistMode.get() ? !inList : inList;
+                boolean contains = filterItems.get().contains(item);
+                boolean shouldSell = (mode.get() == Mode.Whitelist) ? contains : !contains;
 
                 if (shouldSell) {
                     mc.interactionManager.clickSlot(screen.getScreenHandler().syncId, i, 0, SlotActionType.QUICK_MOVE, mc.player);
