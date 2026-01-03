@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "meteorminus",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "MeteorMinus",
+  "description": "Meteor Client Utility Addon.",
   "authors": [
-    "seasnail"
+    "Sylent1305"
   ],
   "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
+    "sources": "https://github.com/Sylent1305/MeteorMinus"
   },
-  "icon": "assets/template/icon.png",
+  "icon": "assets/meteorminus/Icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
@@ -18,7 +18,7 @@
     ]
   },
   "mixins": [
-    "addon-template.mixins.json"
+    "meteorminus.mixins.json"
   ],
   "custom": {
     "meteor-client:color": "225,25,25",

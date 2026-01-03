@@ -23,7 +23,7 @@ public class AddonTemplate extends MeteorAddon {
     public static final Category METEOR_MINUS = new Category("MeteorMinus", Items.BARRIER.getDefaultStack());
     @Override
     public void onInitialize() {
-        LOG.info("Initializing Meteor Addon Template");
+        LOG.info("Initializing MeteorMinus");
 
         // Modules
         Modules.get().add(new AutoSell());
@@ -48,6 +48,6 @@ public class AddonTemplate extends MeteorAddon {
 
     @Override
     public GithubRepo getRepo() {
-        return new GithubRepo("MeteorDevelopment", "meteor-addon-template");
+        return new GithubRepo("MeteorMinus", "meteor-minus");
     }
 }
