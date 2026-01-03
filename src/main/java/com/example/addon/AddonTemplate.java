@@ -12,18 +12,22 @@ import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Modules;
 import org.slf4j.Logger;
+import net.minecraft.item.Items;
+import com.example.addon.modules.AutoSell;
+import com.example.addon.modules.AutoTrash;
 
 public class AddonTemplate extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
     public static final Category CATEGORY = new Category("Example");
     public static final HudGroup HUD_GROUP = new HudGroup("Example");
-
+    public static final Category METEOR_MINUS = new Category("MeteorMinus", Items.BARRIER.getDefaultStack());
     @Override
     public void onInitialize() {
         LOG.info("Initializing Meteor Addon Template");
 
         // Modules
-        Modules.get().add(new ModuleExample());
+        Modules.get().add(new AutoSell());
+        Modules.get().add(new AutoTrash());
 
         // Commands
         Commands.add(new CommandExample());
@@ -34,7 +38,7 @@ public class AddonTemplate extends MeteorAddon {
 
     @Override
     public void onRegisterCategories() {
-        Modules.registerCategory(CATEGORY);
+        Modules.registerCategory(METEOR_MINUS);
     }
 
     @Override
