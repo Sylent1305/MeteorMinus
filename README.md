@@ -7,11 +7,14 @@ A utility addon for Meteor Client.
 ### Meteorminus Category
 Adds a dedicated category to the Meteor Client GUI.
 
-### Auto Trash
+### AutoTrash
 Automates the process of clearing inventory using server-side trash commands.
 
-### Auto Sell
+### AutoSell
 Automatically executes selling routines of full chest.
+
+### AutoCraft
+Automatically crafting items (Custom Recipes Are Supported!)
 
 ---
 
