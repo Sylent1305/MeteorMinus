@@ -1,6 +1,8 @@
 # MeteorMinus
 
 A utility addon for Meteor Client.
+![Icon.png](src/main/resources/assets/meteorminus/Icon.png)
+
 
 ## Features
 
