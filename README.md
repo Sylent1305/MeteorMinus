@@ -4,7 +4,6 @@ A utility addon for Meteor Client.
 
 ## Features
 
-![hud.gif](src/main/resources/assets/meteorminus/hud.gif)
 ![Screenshot_90.jpg](src/main/resources/assets/meteorminus/Screenshot_90.jpg)
 
 ### Meteorminus Category
@@ -21,6 +20,11 @@ Automatically crafting items (Custom Recipes Are Supported!)
 
 ### Inventory Log
 Adds a new HUD option for meteor that shows inventory log.
+![hud.gif](src/main/resources/assets/meteorminus/hud.gif)
+
+### Villager Reroller
+Villager Auto Reroller that finds you the exact enchantments you are searching for.
+![VillagerReroller.gif](src/main/resources/assets/meteorminus/VillagerReroller.gif)
 
 ---
 
