@@ -21,6 +21,7 @@ Automatically crafting items (Custom Recipes Are Supported!)
 
 ### Inventory Log
 Adds a new HUD option for meteor that shows inventory log.
+
 ---
 
 ## Installation
