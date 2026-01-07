@@ -18,8 +18,8 @@ import com.example.addon.modules.AutoTrash;
 
 public class AddonTemplate extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
-    public static final Category CATEGORY = new Category("Example");
-    public static final HudGroup HUD_GROUP = new HudGroup("Example");
+    public static final Category CATEGORY = new Category("MeteorMinus");
+    public static final HudGroup HUD_GROUP = new HudGroup("MeteorMinus");
     public static final Category METEOR_MINUS = new Category("MeteorMinus", Items.BARRIER.getDefaultStack());
     @Override
     public void onInitialize() {

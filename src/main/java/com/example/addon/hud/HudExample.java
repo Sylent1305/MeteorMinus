@@ -10,7 +10,7 @@ public class HudExample extends HudElement {
     /**
      * The {@code name} parameter should be in kebab-case.
      */
-    public static final HudElementInfo<HudExample> INFO = new HudElementInfo<>(AddonTemplate.HUD_GROUP, "example", "HUD element example.", HudExample::new);
+    public static final HudElementInfo<HudExample> INFO = new HudElementInfo<>(AddonTemplate.HUD_GROUP, "MeteorMinus", "MeteorMinus-HUD.", HudExample::new);
 
     public HudExample() {
         super(INFO);

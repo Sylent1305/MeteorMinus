@@ -4,6 +4,9 @@ A utility addon for Meteor Client.
 
 ## Features
 
+![hud.gif](src/main/resources/assets/meteorminus/hud.gif)
+![Screenshot_90.jpg](src/main/resources/assets/meteorminus/Screenshot_90.jpg)
+
 ### Meteorminus Category
 Adds a dedicated category to the Meteor Client GUI.
 
@@ -16,6 +19,8 @@ Automatically executes selling routines of full chest.
 ### AutoCraft
 Automatically crafting items (Custom Recipes Are Supported!)
 
+### Inventory Log
+Adds a new HUD option for meteor that shows inventory log.
 ---
 
 ## Installation
