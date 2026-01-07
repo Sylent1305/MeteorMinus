@@ -3,6 +3,7 @@ package com.example.addon;
 import com.example.addon.commands.CommandExample;
 import com.example.addon.hud.InventoryLogHud;
 import com.example.addon.modules.AutoCraft;
+import com.example.addon.modules.VillagerReroller;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.GithubRepo;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
@@ -29,6 +30,8 @@ public class AddonTemplate extends MeteorAddon {
         Modules.get().add(new AutoSell());
         Modules.get().add(new AutoTrash());
         Modules.get().add(new AutoCraft());
+        Modules.get().add(new VillagerReroller());
+
 
 
         // Commands
