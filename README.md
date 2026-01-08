@@ -56,6 +56,6 @@ Automatically crafting items (Custom Recipes Are Supported!)
 
 ### Building from source
 ```bash
-git clone [https://github.com/YourUsername/MeteorMinus.git](https://github.com/YourUsername/MeteorMinus.git)
+git clone [https://github.com/Sylent1305/MeteorMinus.git]
 cd MeteorMinus
 ./gradlew build
