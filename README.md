@@ -9,25 +9,32 @@ A utility addon for Meteor Client.
 ### Meteorminus Category
 Adds a dedicated category to the Meteor Client GUI.
 
+### Villager Reroller
+Villager Auto Reroller that finds you the exact enchantments you are searching for.
+
+![VillagerReroller.gif](src/main/resources/assets/meteorminus/VillagerReroller.gif)
+
+### Inventory Log
+Adds a new HUD option for meteor that shows inventory log.
+
+![hud.gif](src/main/resources/assets/meteorminus/hud.gif)
+
 ### AutoTrash
 Automates the process of clearing inventory using server-side trash commands.
+
 ![AutoTrash.jpg](src/main/resources/assets/meteorminus/AutoTrash.jpg)
 
 ### AutoSell
 Automatically executes selling routines of full chests.
+
 ![AutoSell.jpg](src/main/resources/assets/meteorminus/AutoSell.jpg)
 
 ### AutoCraft
 Automatically crafting items (Custom Recipes Are Supported!)
+
 ![AutoCraft.jpg](src/main/resources/assets/meteorminus/AutoCraft.jpg)
 
-### Inventory Log
-Adds a new HUD option for meteor that shows inventory log.
-![hud.gif](src/main/resources/assets/meteorminus/hud.gif)
 
-### Villager Reroller
-Villager Auto Reroller that finds you the exact enchantments you are searching for.
-![VillagerReroller.gif](src/main/resources/assets/meteorminus/VillagerReroller.gif)
 
 ---
 
@@ -41,7 +48,7 @@ Villager Auto Reroller that finds you the exact enchantments you are searching f
 
 ## Requirements
 
-* Minecraft (Fabric)
+* Minecraft (Fabric) 1.12.10
 * Meteor Client
 * Java Runtime Environment (JDK) 21
 
