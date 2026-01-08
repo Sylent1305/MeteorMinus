@@ -4,10 +4,12 @@ A utility addon for Meteor Client.
 
 ## Features
 
-![Screenshot_90.jpg](src/main/resources/assets/meteorminus/Screenshot_90.jpg)
+
 
 ### Meteorminus Category
 Adds a dedicated category to the Meteor Client GUI.
+
+![Screenshot_90.jpg](src/main/resources/assets/meteorminus/Screenshot_90.jpg)
 
 ### Villager Reroller
 Villager Auto Reroller that finds you the exact enchantments you are searching for.
