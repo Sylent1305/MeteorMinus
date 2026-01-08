@@ -11,12 +11,15 @@ Adds a dedicated category to the Meteor Client GUI.
 
 ### AutoTrash
 Automates the process of clearing inventory using server-side trash commands.
+![AutoTrash.jpg](src/main/resources/assets/meteorminus/AutoTrash.jpg)
 
 ### AutoSell
-Automatically executes selling routines of full chest.
+Automatically executes selling routines of full chests.
+![AutoSell.jpg](src/main/resources/assets/meteorminus/AutoSell.jpg)
 
 ### AutoCraft
 Automatically crafting items (Custom Recipes Are Supported!)
+![AutoCraft.jpg](src/main/resources/assets/meteorminus/AutoCraft.jpg)
 
 ### Inventory Log
 Adds a new HUD option for meteor that shows inventory log.
